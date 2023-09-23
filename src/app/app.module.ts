@@ -12,6 +12,7 @@ import { PieChartComponent } from './charts/pie-chart/pie-chart.component';
 import { PieChartGridComponent } from './charts/pie-chart-grid/pie-chart-grid.component';
 import { PieChartAdvanceComponent } from './charts/pie-chart-advance/pie-chart-advance.component';
 import { NormalizedHorizontalBarChartComponent } from './charts/normalized-horizontal-bar-chart/normalized-horizontal-bar-chart.component';
+import { AgGridModule } from "ag-grid-angular";
 
 @NgModule({
   declarations: [AppComponent, VerticalBarChartComponent, StackedHorizontalBarChartComponent, PieChartComponent, PieChartGridComponent, PieChartAdvanceComponent, NormalizedHorizontalBarChartComponent],
@@ -21,6 +22,7 @@ import { NormalizedHorizontalBarChartComponent } from './charts/normalized-horiz
     NgxChartsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    AgGridModule.withComponents([])
   ],
   providers: [],
   bootstrap: [AppComponent],

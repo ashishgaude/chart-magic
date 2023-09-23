@@ -21,6 +21,8 @@
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
     "@swimlane/ngx-charts": "^10.1.0",
+    "ag-grid-angular": "^20.2.0",
+    "ag-grid-community": "^20.2.0",
     "core-js": "^2.5.4",
     "d3": "^4.10.2",
     "d3-array": "^1.2.1",
