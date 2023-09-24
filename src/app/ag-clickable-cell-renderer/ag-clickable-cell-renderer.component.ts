@@ -4,7 +4,6 @@ import {
   Component,
   ViewChild,
 } from "@angular/core";
-import { ICellRendererAngularComp } from "ag-grid-angular";
 import tippy, { hideAll } from "tippy.js";
 
 @Component({
@@ -12,9 +11,7 @@ import tippy, { hideAll } from "tippy.js";
   templateUrl: "./ag-clickable-cell-renderer.component.html",
   styleUrls: ["./ag-clickable-cell-renderer.component.css"],
 })
-export class AgClickableCellRendererComponent
-  implements AfterViewInit, ICellRendererAngularComp
-{
+export class AgClickableCellRendererComponent implements AfterViewInit {
   private params;
   private isOpen = false;
   private tippyInstance;
@@ -39,12 +36,14 @@ export class AgClickableCellRendererComponent
 
   onClickHandler() {
     console.log("++++++>", this.params);
+    this.tippyInstance.hide(); // NOTE: try using unmout instead of hide
   }
 
   configureTippyInstance() {
     this.tippyInstance.enable();
     this.tippyInstance.show();
 
+    // note: the following event handlers are not properly working due to version compatibility issues.
     this.tippyInstance.setProps({
       trigger: "manual",
       placement: "right",
@@ -57,7 +56,7 @@ export class AgClickableCellRendererComponent
       },
       onClickOutside: (instance, event) => {
         this.isOpen = false;
-        instance.unmount();
+        instance.hide();
       },
     });
   }
@@ -70,7 +69,7 @@ export class AgClickableCellRendererComponent
       this.configureTippyInstance();
       this.tippyInstance.setContent(this.container.nativeElement);
     } else {
-      this.tippyInstance.unmount();
+      this.tippyInstance.hide();
     }
   }
 
