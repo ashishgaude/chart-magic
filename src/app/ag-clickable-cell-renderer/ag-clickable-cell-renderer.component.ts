@@ -1,5 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  ViewChild,
+} from "@angular/core";
 import { ICellRendererAngularComp } from "ag-grid-angular";
+import tippy, { hideAll } from "tippy.js";
 
 @Component({
   selector: "app-ag-clickable-cell-renderer",
@@ -7,23 +13,69 @@ import { ICellRendererAngularComp } from "ag-grid-angular";
   styleUrls: ["./ag-clickable-cell-renderer.component.css"],
 })
 export class AgClickableCellRendererComponent
-  implements ICellRendererAngularComp
+  implements AfterViewInit, ICellRendererAngularComp
 {
-  constructor() {}
+  private params;
+  private isOpen = false;
+  private tippyInstance;
 
-  params: any;
+  DataToRender = null;
 
-  agInit(params: any): void {
+  @ViewChild("content") container;
+
+  @ViewChild("trigger") button;
+
+  constructor(private changeDetector: ChangeDetectorRef) {}
+
+  ngAfterViewInit(): void {
+    this.tippyInstance = tippy(this.button.nativeElement);
+    this.tippyInstance.disable();
+  }
+
+  agInit(params) {
     this.params = params;
+    console.log("params::::", params);
   }
 
-  public invokeParentMethod() {
-    this.params.context.componentParent.methodFromParent(
-      `Row: ${this.params.node.rowIndex}, Col: ${this.params.colDef.headerName}`
-    );
+  onClickHandler() {
+    console.log("++++++>", this.params);
   }
 
-  refresh(): boolean {
+  configureTippyInstance() {
+    this.tippyInstance.enable();
+    this.tippyInstance.show();
+
+    this.tippyInstance.setProps({
+      trigger: "manual",
+      placement: "right",
+      arrow: false,
+      interactive: true,
+      appendTo: document.body,
+      hideOnClick: false,
+      onShow: (instance) => {
+        hideAll({ exclude: instance });
+      },
+      onClickOutside: (instance, event) => {
+        this.isOpen = false;
+        instance.unmount();
+      },
+    });
+  }
+
+  togglePopup(rowData) {
+    this.DataToRender = rowData;
+    this.isOpen = !this.isOpen;
+    this.changeDetector.detectChanges();
+    if (this.isOpen) {
+      this.configureTippyInstance();
+      this.tippyInstance.setContent(this.container.nativeElement);
+    } else {
+      this.tippyInstance.unmount();
+    }
+  }
+
+  refresh(rowData): boolean {
+    this.togglePopup(rowData);
     return false;
   }
 }

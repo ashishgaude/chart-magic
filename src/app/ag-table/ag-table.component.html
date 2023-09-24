@@ -16,7 +16,7 @@ class="ag-theme-balham"
 [pagination]="true"
 [paginationPageSize]="defaultPageSize"
 [enableRangeSelection]="true"
-[context]="context"
+(cellClicked)="onCellClicked($event)"
 [frameworkComponents]="frameworkComponents"
 >
 </ag-grid-angular>

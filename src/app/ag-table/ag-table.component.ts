@@ -10,10 +10,8 @@ import { AgClickableCellRendererComponent } from "../ag-clickable-cell-renderer/
 export class AgTableComponent implements OnInit {
   private gridApi: any;
   private frameworkComponents;
-  private context;
 
   constructor() {
-    this.context = { componentParent: this };
     this.frameworkComponents = {
       childMessageRenderer: AgClickableCellRendererComponent,
     };
@@ -50,5 +48,21 @@ export class AgTableComponent implements OnInit {
 
   onPageSizeChanged(event: any) {
     this.gridApi.paginationSetPageSize(Number(event.target.value));
+  }
+
+  onCellClicked(params) {
+    if (
+      params.event.target.dataset.action == "toggle" &&
+      params.column.getColId() == "Action"
+    ) {
+      const cellRendererInstances = params.api.getCellRendererInstances({
+        rowNodes: [params.node],
+        columns: [params.column],
+      });
+      if (cellRendererInstances.length > 0) {
+        const instance = cellRendererInstances[0];
+        instance.refresh(params.data);
+      }
+    }
   }
 }

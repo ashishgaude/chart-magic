@@ -1,1 +1,38 @@
-<span><button style="height: 20px" (click)="invokeParentMethod()" class="btn btn-info">Follow</button></span>
+<!-- source: https://stackblitz.com/edit/ag-grid-angular-popup-blog-pbj9ht?file=src%2Fapp%2Fapp.component.ts -->
+<div>
+    <button #trigger class="btn btn-primary" data-action="toggle">Follow</button>
+  
+    <div #content *ngIf="isOpen" class="menu-container">
+       
+        <div>
+            <table>
+                <tr>
+                    <td>Feedback Id</td>
+                    <td>{{DataToRender.FeedbackId}}</td>
+                </tr>
+                <tr>
+                    <td>Assignee</td>
+                    <td><input type="text" name="" id=""></td>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td><select name="" id="">
+                        <option value="open">Open</option>
+                        <option value="processing">Processing</option>
+                        <option value="closed">Closed</option>
+                        <option value="notapplicable">Not Applicable</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td>Comments</td>
+                    <td><textarea name="" id="" cols="20" rows="5"></textarea></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button (click)="onClickHandler()">Submit</button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+  </div>
+  
