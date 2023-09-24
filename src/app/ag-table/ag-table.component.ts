@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { tabledata } from "./tabledata";
+import { AgClickableCellRendererComponent } from "../ag-clickable-cell-renderer/ag-clickable-cell-renderer.component";
 
 @Component({
   selector: "app-ag-table",
@@ -7,7 +8,15 @@ import { tabledata } from "./tabledata";
   styleUrls: ["./ag-table.component.css"],
 })
 export class AgTableComponent implements OnInit {
-  constructor() {}
+  private frameworkComponents;
+  private context;
+
+  constructor() {
+    this.context = { componentParent: this };
+    this.frameworkComponents = {
+      childMessageRenderer: AgClickableCellRendererComponent,
+    };
+  }
 
   ngOnInit() {}
 
@@ -24,8 +33,16 @@ export class AgTableComponent implements OnInit {
     { headerName: "Insights", field: "Insights" },
     { headerName: "Suggestive Action", field: "SuggestiveAction" },
     { headerName: "Follow Up Status", field: "FollowUpStatus" },
-    { headerName: "Action", field: "Action" },
+    {
+      headerName: "Action",
+      field: "Action",
+      cellRenderer: "childMessageRenderer",
+    },
   ];
 
   rowData = tabledata;
+
+  methodFromParent(cell) {
+    alert("Parent Component Method from " + cell + "!");
+  }
 }
