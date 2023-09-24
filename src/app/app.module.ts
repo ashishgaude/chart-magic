@@ -17,6 +17,7 @@ import { AgTableComponent } from "./ag-table/ag-table.component";
 import { AgClickableCellRendererComponent } from "./ag-clickable-cell-renderer/ag-clickable-cell-renderer.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { FileUploadComponent } from "./file-upload/file-upload.component";
+import { StackedVerticalBarChartComponent } from './charts/stacked-vertical-bar-chart/stacked-vertical-bar-chart.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { FileUploadComponent } from "./file-upload/file-upload.component";
     DashboardComponent,
     FileUploadComponent,
     AgClickableCellRendererComponent,
+    StackedVerticalBarChartComponent,
   ],
   imports: [
     BrowserModule,
