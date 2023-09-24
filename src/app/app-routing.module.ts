@@ -1,13 +1,15 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import {DashboardComponent} from './dashboard/dashboard.component'
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
+import { DashboardComponent } from "./dashboard/dashboard.component";
+import { FileUploadComponent } from "./file-upload/file-upload.component";
 
 const routes: Routes = [
-  { path: 'dashboard', component: DashboardComponent },
+  { path: "", component: FileUploadComponent },
+  { path: "dashboard", component: DashboardComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
