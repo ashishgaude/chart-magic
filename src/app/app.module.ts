@@ -15,6 +15,8 @@ import { NormalizedHorizontalBarChartComponent } from "./charts/normalized-horiz
 import { AgGridModule } from "ag-grid-angular";
 import { AgTableComponent } from "./ag-table/ag-table.component";
 import { AgClickableCellRendererComponent } from "./ag-clickable-cell-renderer/ag-clickable-cell-renderer.component";
+import { DashboardComponent } from "./dashboard/dashboard.component";
+import { FileUploadComponent } from "./file-upload/file-upload.component";
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { AgClickableCellRendererComponent } from "./ag-clickable-cell-renderer/a
     PieChartAdvanceComponent,
     NormalizedHorizontalBarChartComponent,
     AgTableComponent,
+    DashboardComponent,
+    FileUploadComponent,
     AgClickableCellRendererComponent,
   ],
   imports: [

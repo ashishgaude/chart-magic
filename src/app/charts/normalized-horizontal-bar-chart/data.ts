@@ -1,67 +1,105 @@
 export var multi = [
   {
-    name: "Germany",
+    name: "Account opening",
     series: [
       {
-        name: "2010",
-        value: 73000000,
+        name: "Protractor",
+        value: 30,
       },
       {
-        name: "2011",
-        value: 89400000,
+        name: "Detractor",
+        value: 50,
       },
       {
-        name: "1990",
-        value: 62000000,
+        name: "Neutral",
+        value: 20,
       },
     ],
   },
 
   {
-    name: "USA",
+    name: "Service performance",
     series: [
       {
-        name: "2010",
-        value: 309000000,
+        name: "Protractor",
+        value: 20,
       },
       {
-        name: "2011",
-        value: 311000000,
+        name: "Detractor",
+        value: 70,
       },
       {
-        name: "1990",
-        value: 250000000,
+        name: "Neutral",
+        value: 10,
       },
     ],
   },
 
   {
-    name: "France",
+    name: "Application/rejection",
     series: [
       {
-        name: "2010",
-        value: 50000020,
+        name: "Protractor",
+        value: 40,
       },
       {
-        name: "2011",
-        value: 58000000,
+        name: "Detractor",
+        value: 50,
       },
       {
-        name: "1990",
-        value: 58000000,
+        name: "Neutral",
+        value: 10,
       },
     ],
   },
   {
-    name: "UK",
+    name: "Account general",
     series: [
       {
-        name: "2010",
-        value: 62000000,
+        name: "Protractor",
+        value: 40,
       },
       {
-        name: "1990",
-        value: 57000000,
+        name: "Detractor",
+        value: 20,
+      },
+      {
+        name: "Neutral",
+        value: 30,
+      },
+    ],
+  },
+  {
+    name: "Human related",
+    series: [
+      {
+        name: "Protractor",
+        value: 50,
+      },
+      {
+        name: "Detractor",
+        value: 10,
+      },
+      {
+        name: "Neutral",
+        value: 10,
+      },
+    ],
+  },
+  {
+    name: "General",
+    series: [
+      {
+        name: "Protractor",
+        value: 45,
+      },
+      {
+        name: "Detractor",
+        value: 50,
+      },
+      {
+        name: "Neutral",
+        value: 5,
       },
     ],
   },

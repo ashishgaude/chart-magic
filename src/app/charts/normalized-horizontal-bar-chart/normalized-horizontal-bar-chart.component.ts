@@ -14,7 +14,7 @@ export class NormalizedHorizontalBarChartComponent implements OnInit {
   ngOnInit() {}
 
   multi: any[];
-  view: any[] = [700, 400];
+  view: any[] = [570, 270];
 
   // options
   showXAxis: boolean = true;
@@ -22,9 +22,9 @@ export class NormalizedHorizontalBarChartComponent implements OnInit {
   gradient: boolean = false;
   showLegend: boolean = true;
   showXAxisLabel: boolean = true;
-  yAxisLabel: string = "Country";
+  yAxisLabel: string = "Category";
   showYAxisLabel: boolean = true;
-  xAxisLabel: string = "Normalized Population";
+  xAxisLabel: string = "";
 
   colorScheme = {
     domain: ["#5AA454", "#A10A28", "#C7B42C", "#AAAAAA"],

@@ -8,6 +8,7 @@ import { AgClickableCellRendererComponent } from "../ag-clickable-cell-renderer/
   styleUrls: ["./ag-table.component.css"],
 })
 export class AgTableComponent implements OnInit {
+  private gridApi: any;
   private frameworkComponents;
   private context;
 
@@ -44,5 +45,10 @@ export class AgTableComponent implements OnInit {
 
   methodFromParent(cell) {
     alert("Parent Component Method from " + cell + "!");
+  }
+  defaultPageSize = 10;
+
+  onPageSizeChanged(event: any) {
+    this.gridApi.paginationSetPageSize(Number(event.target.value));
   }
 }
