@@ -7,6 +7,7 @@ import { tabledata } from "./tabledata";
   styleUrls: ["./ag-table.component.css"],
 })
 export class AgTableComponent implements OnInit {
+  private gridApi: any;
   constructor() {}
 
   ngOnInit() {}
@@ -28,4 +29,9 @@ export class AgTableComponent implements OnInit {
   ];
 
   rowData = tabledata;
+  defaultPageSize = 10;
+
+  onPageSizeChanged(event: any) {
+    this.gridApi.paginationSetPageSize(Number(event.target.value));
+  }
 }
