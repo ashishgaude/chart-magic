@@ -14,7 +14,7 @@ export class NormalizedHorizontalBarChartComponent implements OnInit {
   ngOnInit() {}
 
   multi: any[];
-  view: any[] = [570, 270];
+  view: any[] = [600, 270];
 
   // options
   showXAxis: boolean = true;

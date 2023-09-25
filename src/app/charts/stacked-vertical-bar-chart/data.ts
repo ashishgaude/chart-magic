@@ -1,42 +1,156 @@
 export var multi = [
   {
-    name: "Germany",
+    name: "Account",
     series: [
       {
-        name: "2010",
-        value: 7300000,
+        name: "Protractor",
+        value: 30,
       },
       {
-        name: "2011",
-        value: 8940000,
+        name: "Detractor",
+        value: 50,
+      },
+      {
+        name: "Neutral",
+        value: 20,
       },
     ],
   },
 
   {
-    name: "USA",
+    name: "Banking Service",
     series: [
       {
-        name: "2010",
-        value: 7870000,
+        name: "Protractor",
+        value: 60,
       },
       {
-        name: "2011",
-        value: 8270000,
+        name: "Detractor",
+        value: 30,
+      },
+      {
+        name: "Neutral",
+        value: 10,
       },
     ],
   },
 
   {
-    name: "France",
+    name: "HSBC Net",
     series: [
       {
-        name: "2010",
-        value: 5000002,
+        name: "Protractor",
+        value: 50,
       },
       {
-        name: "2011",
-        value: 5800000,
+        name: "Detractor",
+        value: 30,
+      },
+      {
+        name: "Neutral",
+        value: 20,
+      },
+    ],
+  },
+  {
+    name: "Xero",
+    series: [
+      {
+        name: "Protractor",
+        value: 30,
+      },
+      {
+        name: "Detractor",
+        value: 40,
+      },
+      {
+        name: "Neutral",
+        value: 30,
+      },
+    ],
+  },
+  {
+    name: "ERP Integration",
+    series: [
+      {
+        name: "Protractor",
+        value: 30,
+      },
+      {
+        name: "Detractor",
+        value: 10,
+      },
+      {
+        name: "Neutral",
+        value: 60,
+      },
+    ],
+  },
+  {
+    name: "BACS Setup",
+    series: [
+      {
+        name: "Protractor",
+        value: 40,
+      },
+      {
+        name: "Detractor",
+        value: 50,
+      },
+      {
+        name: "Neutral",
+        value: 10,
+      },
+    ],
+  },
+  {
+    name: "HSBC buisness account",
+    series: [
+      {
+        name: "Protractor",
+        value: 80,
+      },
+      {
+        name: "Detractor",
+        value: 10,
+      },
+      {
+        name: "Neutral",
+        value: 10,
+      },
+    ],
+  },
+  {
+    name: "SUN sponsorship Transfer",
+    series: [
+      {
+        name: "Protractor",
+        value: 40,
+      },
+      {
+        name: "Detractor",
+        value: 40,
+      },
+      {
+        name: "Neutral",
+        value: 20,
+      },
+    ],
+  },
+  {
+    name: "HSBC Team",
+    series: [
+      {
+        name: "Protractor",
+        value: 80,
+      },
+      {
+        name: "Detractor",
+        value: 10,
+      },
+      {
+        name: "Neutral",
+        value: 10,
       },
     ],
   },

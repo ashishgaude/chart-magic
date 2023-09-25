@@ -1,11 +1,32 @@
-<app-ag-table></app-ag-table>
 
-<p>All Charts</p>
+<!-- <div class="float-container"> -->
+<div class="flex-container">
+<!-- <div class="float-child">  -->
+  <div class="flex-child">
+<app-ag-table></app-ag-table>
+</div>
 <!-- <app-vertical-bar-chart></app-vertical-bar-chart> -->
+
+<div class="flex-child">
+  <!-- <p>Attitude Distribution</p> -->
+  <span class="chart-label">Attitude Distribution</span>
 <app-pie-chart-advance></app-pie-chart-advance>
+</div>
+</div>
 <!-- <app-pie-chart></app-pie-chart> -->
 <!-- <app-stacked-horizontal-bar-chart></app-stacked-horizontal-bar-chart> -->
 <!-- <app-pie-chart-grid></app-pie-chart-grid> -->
+
+<div class="flex-container">
+  <div class="flex-child">
+    <span class="chart-label">Category Vs Attitude</span>
 <app-normalized-horizontal-bar-chart></app-normalized-horizontal-bar-chart>
+</div>
+
+  <div class="flex-child">
+    <span class="chart-label">Product Vs Attitude</span>
 <app-stacked-vertical-bar-chart></app-stacked-vertical-bar-chart>
+</div>
+
+</div>
 
