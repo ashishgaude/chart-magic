@@ -20,7 +20,7 @@ export class PieChartAdvanceComponent implements OnInit {
   }
 
   single: any[];
-  view: any[] = [600, 400];
+  view: any[] = [600, 300];
 
   // options
   gradient: boolean = true;

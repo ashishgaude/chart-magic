@@ -20,7 +20,7 @@ export class StackedVerticalBarChartComponent implements OnInit {
   }
 
   multi: any[];
-  view: any[] = [700, 400];
+  view: any[] = [600, 300];
 
   // options
   showXAxis: boolean = true;
@@ -28,13 +28,13 @@ export class StackedVerticalBarChartComponent implements OnInit {
   gradient: boolean = false;
   showLegend: boolean = true;
   showXAxisLabel: boolean = true;
-  xAxisLabel: string = "Country";
+  xAxisLabel: string = "";
   showYAxisLabel: boolean = true;
-  yAxisLabel: string = "Population";
+  yAxisLabel: string = "Product";
   animations: boolean = true;
 
   colorScheme = {
-    domain: ["#5AA454", "#C7B42C", "#AAAAAA"],
+    domain: ["#5AA454", "#A10A28", "#C7B42C", "#AAAAAA"],
   };
 
   onSelect(event) {
