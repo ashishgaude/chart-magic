@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { tabledata } from "./tabledata";
 import { AgClickableCellRendererComponent } from "../ag-clickable-cell-renderer/ag-clickable-cell-renderer.component";
+import { FileUploadService } from "../services/file-upload.service";
 
 @Component({
   selector: "app-ag-table",
@@ -10,36 +11,41 @@ import { AgClickableCellRendererComponent } from "../ag-clickable-cell-renderer/
 export class AgTableComponent implements OnInit {
   private gridApi: any;
   private frameworkComponents;
+  private rawData = [];
 
-  constructor() {
+  rowData = [];
+
+  constructor(private readonly fileUploadService: FileUploadService) {
     this.frameworkComponents = {
       childMessageRenderer: AgClickableCellRendererComponent,
     };
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    const data = this.fileUploadService.getData();
+    this.rawData = (data && data.payload && data.payload.resultsList) || [];
+    this.rowData = this.rawData;
+  }
 
   columnDefs = [
-    { headerName: "Feedback Id", field: "FeedbackId" },
-    { headerName: "Record Date", field: "RecordDate" },
-    { headerName: "Customer Name", field: "CustomerName" },
-    { headerName: "Customer Email", field: "CustomerEmail" },
-    { headerName: "NPS", field: "NPS" },
-    { headerName: "Atttiude", field: "Atttiude" },
-    { headerName: "Category", field: "Category" },
-    { headerName: "Product", field: "Product" },
-    { headerName: "Keywods", field: "Keywods" },
-    { headerName: "Insights", field: "Insights" },
-    { headerName: "Suggestive Action", field: "SuggestiveAction" },
-    { headerName: "Follow Up Status", field: "FollowUpStatus" },
+    { headerName: "Feedback Id", field: "feedBackId" },
+    { headerName: "Record Date", field: "recordDate" },
+    { headerName: "Customer Name", field: "customerName" },
+    { headerName: "Customer Email", field: "customerEmail" },
+    { headerName: "NPS", field: "initiaINPS" },
+    { headerName: "Atttiude", field: "attitude" },
+    { headerName: "Category", field: "category" },
+    { headerName: "Product", field: "product" },
+    { headerName: "Keywods", field: "keywords" },
+    { headerName: "Insights", field: "insights" },
+    { headerName: "Suggestive Action", field: "suggestiveAction" },
+    // { headerName: "Follow Up Status", field: "FollowUpStatus" }, //DONT HAVE COLUMN FOR THIS IN JSON
     {
       headerName: "Action",
       field: "Action",
       cellRenderer: "childMessageRenderer",
     },
   ];
-
-  rowData = tabledata;
 
   methodFromParent(cell) {
     alert("Parent Component Method from " + cell + "!");
