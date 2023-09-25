@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { single } from "./data";
+import * as _ from "lodash";
+
+import { FileUploadService } from "src/app/services/file-upload.service";
 
 @Component({
   selector: "app-pie-chart-advance",
@@ -7,11 +9,15 @@ import { single } from "./data";
   styleUrls: ["./pie-chart-advance.component.css"],
 })
 export class PieChartAdvanceComponent implements OnInit {
-  constructor() {
-    Object.assign(this, { single });
-  }
+  private rawData = [];
+  constructor(private readonly fileUploadService: FileUploadService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    const data = this.fileUploadService.getData();
+    this.rawData = (data && data.payload && data.payload.resultsList) || [];
+    const output = this.formatData(this.rawData);
+    Object.assign(this, { single: output });
+  }
 
   single: any[];
   view: any[] = [600, 400];
@@ -36,5 +42,17 @@ export class PieChartAdvanceComponent implements OnInit {
 
   onDeactivate(data): void {
     console.log("Deactivate", JSON.parse(JSON.stringify(data)));
+  }
+
+  formatData(data) {
+    const grouped = _.groupBy(data, "attitude");
+    const output = [];
+    for (let key of Object.keys(grouped)) {
+      let obj = { name: null, value: 0 };
+      obj.name = key;
+      obj.value = grouped[key].length;
+      output.push(obj);
+    }
+    return output;
   }
 }

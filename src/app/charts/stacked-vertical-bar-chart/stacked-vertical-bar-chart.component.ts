@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import * as _ from "lodash";
 
-import { multi } from "./data";
+import { FileUploadService } from "src/app/services/file-upload.service";
 
 @Component({
   selector: "app-stacked-vertical-bar-chart",
@@ -8,11 +9,15 @@ import { multi } from "./data";
   styleUrls: ["./stacked-vertical-bar-chart.component.css"],
 })
 export class StackedVerticalBarChartComponent implements OnInit {
-  constructor() {
-    Object.assign(this, { multi });
-  }
+  private rawData = [];
+  constructor(private readonly fileUploadService: FileUploadService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    const data = this.fileUploadService.getData();
+    this.rawData = (data && data.payload && data.payload.resultsList) || [];
+    const output = this.formatData(this.rawData);
+    Object.assign(this, { multi: output });
+  }
 
   multi: any[];
   view: any[] = [700, 400];
@@ -31,7 +36,27 @@ export class StackedVerticalBarChartComponent implements OnInit {
   colorScheme = {
     domain: ["#5AA454", "#C7B42C", "#AAAAAA"],
   };
+
   onSelect(event) {
     console.log(event);
+  }
+
+  formatData(data) {
+    const output = [];
+    const grouped = _.groupBy(data, "product");
+    for (let group in grouped) {
+      const obj = {};
+      obj["name"] = group;
+      obj["series"] = [];
+      const grouopedByAttitude = _.groupBy(grouped[group], "attitude");
+      for (let s in grouopedByAttitude) {
+        let objAttidute = {};
+        objAttidute["name"] = s;
+        objAttidute["value"] = grouopedByAttitude[s].length;
+        obj["series"].push(objAttidute);
+      }
+      output.push(obj);
+    }
+    return output;
   }
 }
