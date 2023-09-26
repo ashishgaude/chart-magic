@@ -14,8 +14,7 @@ export class NormalizedHorizontalBarChartComponent implements OnInit {
   constructor(private readonly fileUploadService: FileUploadService) {}
 
   ngOnInit() {
-    const data = this.fileUploadService.getData();
-    this.rawData = (data && data.payload && data.payload.resultsList) || [];
+    this.rawData = this.fileUploadService.getData();
     const output = this.formatData(this.rawData);
     Object.assign(this, { multi: output });
   }

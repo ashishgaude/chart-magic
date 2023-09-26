@@ -5,6 +5,7 @@ import {
   ViewChild,
 } from "@angular/core";
 import tippy, { hideAll } from "tippy.js";
+import { FileUploadService } from "../services/file-upload.service";
 
 @Component({
   selector: "app-ag-clickable-cell-renderer",
@@ -18,11 +19,19 @@ export class AgClickableCellRendererComponent implements AfterViewInit {
 
   DataToRender = null;
 
+  statuses = ["Open", "Processing", "Closed", "Not Applicable"];
+  assignee = "";
+  selectedStatus = this.statuses[0];
+  comments = "";
+
   @ViewChild("content") container;
 
   @ViewChild("trigger") button;
 
-  constructor(private changeDetector: ChangeDetectorRef) {}
+  constructor(
+    private changeDetector: ChangeDetectorRef,
+    private readonly fileUploadService: FileUploadService
+  ) {}
 
   ngAfterViewInit(): void {
     this.tippyInstance = tippy(this.button.nativeElement);
@@ -31,11 +40,20 @@ export class AgClickableCellRendererComponent implements AfterViewInit {
 
   agInit(params) {
     this.params = params;
-    console.log("params::::", params);
+  }
+
+  getSelectedValue(event) {
+    this.selectedStatus = event.target.value;
   }
 
   onClickHandler() {
     console.log("++++++>", this.params);
+    this.fileUploadService.saveRow(
+      this.params.data.feedBackId,
+      this.assignee,
+      this.selectedStatus,
+      this.comments
+    );
     this.tippyInstance.hide(); // NOTE: try using unmout instead of hide
   }
 
@@ -63,6 +81,9 @@ export class AgClickableCellRendererComponent implements AfterViewInit {
 
   togglePopup(rowData) {
     this.DataToRender = rowData;
+    this.assignee = rowData.assignee;
+    this.selectedStatus = rowData.followUpStatus;
+    this.comments = rowData.comments;
     this.isOpen = !this.isOpen;
     this.changeDetector.detectChanges();
     if (this.isOpen) {

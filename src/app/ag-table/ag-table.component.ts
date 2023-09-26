@@ -22,8 +22,7 @@ export class AgTableComponent implements OnInit {
   }
 
   ngOnInit() {
-    const data = this.fileUploadService.getData();
-    this.rawData = (data && data.payload && data.payload.resultsList) || [];
+    this.rawData = this.fileUploadService.getData();
     this.rowData = this.rawData;
   }
 
@@ -39,7 +38,9 @@ export class AgTableComponent implements OnInit {
     { headerName: "Keywods", field: "keywords" },
     { headerName: "Insights", field: "insights" },
     { headerName: "Suggestive Action", field: "suggestiveAction" },
-    // { headerName: "Follow Up Status", field: "FollowUpStatus" }, //DONT HAVE COLUMN FOR THIS IN JSON
+    { headerName: "Assignee", field: "assignee" },
+    { headerName: "Follow Up Status", field: "followUpStatus" },
+    { headerName: "Comments", field: "comments" },
     {
       headerName: "Action",
       field: "Action",

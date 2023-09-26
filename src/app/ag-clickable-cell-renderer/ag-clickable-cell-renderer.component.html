@@ -12,20 +12,17 @@
                 </tr>
                 <tr>
                     <td>Assignee</td>
-                    <td><input type="text" name="" id=""></td>
+                    <td><input  name="" id="" [(ngModel)]="assignee"></td>
                 </tr>
                 <tr>
                     <td>Status</td>
-                    <td><select name="" id="">
-                        <option value="open">Open</option>
-                        <option value="processing">Processing</option>
-                        <option value="closed">Closed</option>
-                        <option value="notapplicable">Not Applicable</option>
+                    <td><select (change)="getSelectedValue($event)" name="" id="" [(ngModel)]="selectedStatus">
+                        <option *ngFor="let c of statuses" [value]="c">{{c}}</option>
                     </select></td>
                 </tr>
                 <tr>
                     <td>Comments</td>
-                    <td><textarea name="" id="" cols="20" rows="5"></textarea></td>
+                    <td><textarea name="" id="" cols="20" rows="5" [(ngModel)]="comments"></textarea></td>
                 </tr>
                 <tr>
                     <td></td>
