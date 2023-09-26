@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { tabledata } from "./tabledata";
+// import { GridOptions, RowNode } from 'ag-grid/main';
 import { AgClickableCellRendererComponent } from "../ag-clickable-cell-renderer/ag-clickable-cell-renderer.component";
 import { FileUploadService } from "../services/file-upload.service";
 
@@ -51,10 +52,38 @@ export class AgTableComponent implements OnInit {
   methodFromParent(cell) {
     alert("Parent Component Method from " + cell + "!");
   }
-  defaultPageSize = 10;
+  defaultPageSize = 5;
+
+   gridOptions = {
+    defaultColDef: {
+        editable: true,
+        enableRowGroup: true,
+        enablePivot: true,
+        enableValue: true,
+        sortable: true,
+        resizable: true,
+        filter: true
+    },
+    suppressRowClickSelection: true,
+    groupSelectsChildren: true,
+    debug: true,
+    rowSelection: 'multiple',
+    rowGroupPanelShow: 'always',
+    pivotPanelShow: 'always',
+    enableRangeSelection: true,
+    columnDefs: this.columnDefs,
+    pagination: true,
+    paginationPageSize: 10,
+    paginationNumberFormatter: function(params) {
+        return '[' + params.value.toLocaleString() + ']';
+    }
+};
+
 
   onPageSizeChanged(event: any) {
-    this.gridApi.paginationSetPageSize(Number(event.target.value));
+    // this.gridApi.paginationSetPageSize(Number(event.target.value));
+    // var value = document.getElementById('page-size').value;
+    // gridOptions.api.paginationSetPageSize(Number(value));
   }
 
   onCellClicked(params) {

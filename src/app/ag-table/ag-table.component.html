@@ -2,14 +2,15 @@
 
     Page Size:
     <select style="padding-top:15;" (change)="onPageSizeChanged($event)">
+        <option value="5" selected>5</option>
         <option value="10">10</option>
-        <option value="100">100</option>
-        <option value="500">500</option>
-        <option value="1000">1000</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
     </select>
 
 <ag-grid-angular
 style="width: 1000px; height: 250px;"
+[gridOptions]="gridOptions"
 class="ag-theme-balham"
 [rowData]="rowData"
 [columnDefs]="columnDefs"
