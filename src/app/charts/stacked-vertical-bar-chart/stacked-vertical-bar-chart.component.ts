@@ -43,6 +43,9 @@ export class StackedVerticalBarChartComponent implements OnInit {
   formatData(data) {
     const output = [];
     const grouped = _.groupBy(data, "product");
+    // NOTE: Removing null and empty products from the chart data
+    delete grouped[""];
+    delete grouped["null"];
     for (let group in grouped) {
       const obj = {};
       obj["name"] = group;
