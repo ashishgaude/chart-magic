@@ -13,7 +13,7 @@ export class PieChartAdvanceComponent implements OnInit {
   constructor(private readonly fileUploadService: FileUploadService) {}
 
   ngOnInit() {
-    this.rawData = this.fileUploadService.getData();
+    this.rawData = this.fileUploadService.loadData();
     const output = this.formatData(this.rawData);
     Object.assign(this, { single: output });
   }

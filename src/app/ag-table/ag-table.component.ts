@@ -12,7 +12,6 @@ import { FileUploadService } from "../services/file-upload.service";
 export class AgTableComponent implements OnInit {
   private gridApi: any;
   private frameworkComponents;
-  private rawData = [];
 
   rowData = [];
 
@@ -23,8 +22,15 @@ export class AgTableComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.rawData = this.fileUploadService.getData();
-    this.rowData = this.rawData;
+    this.fileUploadService.getTableData().subscribe(
+      (data) => {
+        this.rowData = data;
+      },
+      (error) => {
+        console.log("[AgTableComponent.ngOnInit] Subscriber Error:", error);
+        alert("Error fetching table data");
+      }
+    );
   }
 
   columnDefs = [
@@ -54,31 +60,30 @@ export class AgTableComponent implements OnInit {
   }
   defaultPageSize = 5;
 
-   gridOptions = {
+  gridOptions = {
     defaultColDef: {
-        editable: true,
-        enableRowGroup: true,
-        enablePivot: true,
-        enableValue: true,
-        sortable: true,
-        resizable: true,
-        filter: true
+      editable: true,
+      enableRowGroup: true,
+      enablePivot: true,
+      enableValue: true,
+      sortable: true,
+      resizable: true,
+      filter: true,
     },
     suppressRowClickSelection: true,
     groupSelectsChildren: true,
     debug: true,
-    rowSelection: 'multiple',
-    rowGroupPanelShow: 'always',
-    pivotPanelShow: 'always',
+    rowSelection: "multiple",
+    rowGroupPanelShow: "always",
+    pivotPanelShow: "always",
     enableRangeSelection: true,
     columnDefs: this.columnDefs,
     pagination: true,
     paginationPageSize: 10,
-    paginationNumberFormatter: function(params) {
-        return '[' + params.value.toLocaleString() + ']';
-    }
-};
-
+    paginationNumberFormatter: function (params) {
+      return "[" + params.value.toLocaleString() + "]";
+    },
+  };
 
   onPageSizeChanged(event: any) {
     // this.gridApi.paginationSetPageSize(Number(event.target.value));
